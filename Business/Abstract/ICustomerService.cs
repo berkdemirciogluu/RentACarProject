@@ -1,5 +1,4 @@
 ﻿using Core.DataAccess;
-using Core.Utilities.Results.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IBrandService : IBaseService<Brand>
+    public interface ICustomerService : IBaseService<Customer>
     {
 
     }

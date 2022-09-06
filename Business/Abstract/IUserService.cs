@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IBrandService : IBaseService<Brand>
+    public interface IUserService : IBaseService<User>
     {
-
     }
 }
