@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.DataAccess;
 using Core.Utilities.Results.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -11,33 +12,13 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class CarManager : ICarService
+    public class CarManager : BaseManager<Car>, ICarService
     {
         ICarDal _carDal;
 
-        public CarManager(ICarDal carDal)
+        public CarManager(ICarDal carDal) : base(carDal)
         {
             _carDal = carDal;
-        }
-
-        public IResult Add(Car car)
-        {
-            _carDal.Add(car);
-        }
-
-        public IResult Delete(Car car)
-        {
-            _carDal.Delete(car);
-        }
-
-        public IDataResult<List<Car>> GetAll()
-        {
-           return _carDal.GetAll();
-        }
-
-        public IDataResult<Car> GetById(int id)
-        {
-            return _carDal.Get(c => c.Id == id);
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
@@ -55,9 +36,5 @@ namespace Business.Concrete
             return _carDal.GetAll(c => c.ColorId == colorId).ToList();
         }
 
-        public IResult Update(Car car)
-        {
-            _carDal.Update(car);
-        }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.DataAccess
 {
-    public interface IBaseService<T>
+    public interface IBaseService<T> 
     {
         IDataResult<List<T>> GetAll();
 
