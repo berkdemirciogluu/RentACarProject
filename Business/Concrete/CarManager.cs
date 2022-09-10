@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.DataAccess;
 using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -23,17 +25,21 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return _carDal.GetCarDetails();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarsDetails(),Messages.SuccesfullProcess);
         }
 
         public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            return _carDal.GetAll(c => c.BrandId == brandId).ToList();
+            if (brandId == null)
+                return new ErrorDataResult<List<Car>>(Messages.InvalidDataEntrance);
+            return new SuccessDataResult<List<Car>>(_carDal.GetCarsByBrandId(brandId), Messages.SuccesfullProcess);
         }
 
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return _carDal.GetAll(c => c.ColorId == colorId).ToList();
+            if (colorId == null)
+                return new ErrorDataResult<List<Car>>(Messages.InvalidDataEntrance);
+            return new SuccessDataResult<List<Car>>(_carDal.GetCarsByColorId(colorId), Messages.SuccesfullProcess);
         }
 
     }

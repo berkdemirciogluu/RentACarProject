@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,11 +24,12 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
-        public void Delete(TEntity entity)
+        public void Delete(int id)
         {
+
             using (TContext context = new TContext())
             {
-                var deletedEntity = context.Entry(entity);
+                var deletedEntity = context.Entry(context.Set<TEntity>().Find(id));
                 deletedEntity.State = EntityState.Deleted;
                 context.SaveChanges();
             }
@@ -57,6 +59,14 @@ namespace Core.DataAccess.EntityFramework
                 var updatedEntity = context.Entry(entity);
                 updatedEntity.State = EntityState.Modified;
                 context.SaveChanges();
+            }
+        }
+
+        public TEntity GetById(int id)
+        {
+            using (TContext context = new TContext())
+            {
+                return context.Set<TEntity>().Find(id);
             }
         }
     }

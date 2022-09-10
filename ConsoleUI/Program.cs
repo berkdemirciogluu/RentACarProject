@@ -8,12 +8,6 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
-
-            foreach (var item in carManager.GetAll())
-            {
-                Console.WriteLine(item.DailyPrice);
-            }
 
         }
     }

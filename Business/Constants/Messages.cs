@@ -8,12 +8,8 @@ namespace Business.Constants
 {
     public static class Messages
     {
-        public static string CarAdded = "Car Added";
-        public static string CarDeleted = "Car Deleted";
-        public static string CarUpdated = "Car Updated";
-        public static string CarInvalid = "Car Invalid";
-        public static string CarsListed = "Cars Listed";
-        public static string CarListed = "Car Listed";
-        public static string ProcessSuccess = "Process successfully completed";
+        public static string SuccesfullProcess = "Process Completed Succesfully";
+        public static string InvalidDataEntrance = " Please Enter Valid Data.";
+        public static string EntityNotFound = "Entity Not Found";
     }
 }
