@@ -1,13 +1,12 @@
-﻿using Business.Constants;
-using Core.DataAccess.EntityFramework;
+﻿using Core.DataAccess;
+using Core.Utilities.Constants;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
-using System;
 using System.Collections.Generic;
 
-namespace Core.DataAccess
+namespace Core.Business
 {
-    public class BaseManager<T> : IBaseService<T> 
+    public class BaseManager<T> : IBaseService<T>
     {
         IEntityRepository<T> _entityDal;
 
@@ -37,14 +36,14 @@ namespace Core.DataAccess
 
         public virtual IDataResult<List<T>> GetAll()
         {
-            return new SuccessDataResult<List<T>>(_entityDal.GetAll(),Messages.SuccesfullProcess);
+            return new SuccessDataResult<List<T>>(_entityDal.GetAll(), Messages.SuccesfullProcess);
         }
 
         public virtual IDataResult<T> GetById(int id)
         {
-            if (id == null)
+            if (id == 0)
                 return new ErrorDataResult<T>(Messages.InvalidDataEntrance);
-            return new SuccessDataResult<T>(_entityDal.GetById(id),Messages.SuccesfullProcess);                
+            return new SuccessDataResult<T>(_entityDal.GetById(id), Messages.SuccesfullProcess);
         }
 
         public virtual IResult Update(T entity)

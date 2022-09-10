@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.DataAccess
+namespace Core.Business
 {
-    public interface IBaseService<T> 
+    public interface IBaseService<T>
     {
         IDataResult<List<T>> GetAll();
 

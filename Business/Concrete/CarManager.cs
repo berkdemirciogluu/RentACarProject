@@ -1,16 +1,12 @@
 ﻿using Business.Abstract;
-using Business.Constants;
-using Core.DataAccess;
+using Business.Utilities.Constants;
+using Core.Business;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
@@ -30,14 +26,14 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            if (brandId == null)
+            if (brandId == 0)
                 return new ErrorDataResult<List<Car>>(Messages.InvalidDataEntrance);
             return new SuccessDataResult<List<Car>>(_carDal.GetCarsByBrandId(brandId), Messages.SuccesfullProcess);
         }
 
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            if (colorId == null)
+            if (colorId == 0)
                 return new ErrorDataResult<List<Car>>(Messages.InvalidDataEntrance);
             return new SuccessDataResult<List<Car>>(_carDal.GetCarsByColorId(colorId), Messages.SuccesfullProcess);
         }
