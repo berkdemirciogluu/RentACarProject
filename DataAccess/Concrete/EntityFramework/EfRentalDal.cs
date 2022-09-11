@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    internal class EfRentalDal : EfEntityRepositoryBase<Rental, Context>, IRentalDal
+    public class EfRentalDal : EfEntityRepositoryBase<Rental, Context>, IRentalDal
     {
     }
 }
