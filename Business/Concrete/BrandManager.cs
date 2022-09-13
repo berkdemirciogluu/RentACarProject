@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Core.Business;
 using Core.Utilities.Results.Abstract;
 using DataAccess.Abstract;
@@ -18,6 +19,12 @@ namespace Business.Concrete
         public BrandManager(IBrandDal brandDal) : base(brandDal)
         {
             _brandDal = brandDal;
-        }        
+        }
+
+        [SecuredOperation("brand.add,admin")]
+        public override IResult Add(Brand entity)
+        {
+            return base.Add(entity);
+        }
     }
 }
