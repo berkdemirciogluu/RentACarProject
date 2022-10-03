@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspects.Autofac;
+using Core.Aspects.Autofac.Caching;
 using Core.Business;
 using Core.Utilities.Results.Abstract;
 using DataAccess.Abstract;
@@ -21,6 +22,7 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
+        [CacheRemoveAspect("ICarService.Get")]
         [SecuredOperation("brand.add,admin")]
         public override IResult Add(Brand entity)
         {
